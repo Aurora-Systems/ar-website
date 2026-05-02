@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en" class="page-contact">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact — Aurora Systems</title>
+  <meta name="description" content="Start your digital product journey with Aurora Systems. Book a free strategy call or send us a message." />
+  <link rel="stylesheet" href="styles/main.css" />
+  <style>
+    .contact-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: calc(100svh - var(--nav-h));
+    }
+
+    /* Left panel */
+    .contact-left {
+      background: var(--fg);
+      color: var(--white);
+      padding: 80px clamp(32px, 6vw, 80px);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .contact-left::before {
+      content: '';
+      position: absolute;
+      bottom: -100px; left: -100px;
+      width: 400px; height: 400px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(37,65,232,0.15) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .contact-left-inner { position: relative; z-index: 1; }
+    .contact-left h1 {
+      font-family: var(--font-display);
+      font-size: clamp(38px, 5vw, 64px);
+      font-weight: 600;
+      letter-spacing: -0.03em;
+      line-height: 1.05;
+      color: var(--white);
+      margin-top: 16px;
+      margin-bottom: 24px;
+    }
+    .contact-left p {
+      font-size: 17px;
+      line-height: 1.75;
+      color: rgba(250,249,247,0.6);
+      max-width: 440px;
+      margin-bottom: 48px;
+    }
+    .contact-details { display: flex; flex-direction: column; gap: 24px; }
+    .contact-detail {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+    }
+    .contact-detail-icon {
+      width: 40px; height: 40px;
+      border-radius: 8px;
+      background: rgba(250,249,247,0.06);
+      border: 1px solid rgba(250,249,247,0.08);
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+      font-size: 17px;
+    }
+    .contact-detail-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(250,249,247,0.35);
+      margin-bottom: 4px;
+    }
+    .contact-detail-value {
+      font-size: 15px;
+      color: rgba(250,249,247,0.85);
+      font-weight: 500;
+    }
+    .contact-detail-value a {
+      color: inherit;
+      text-decoration: none;
+      transition: color 0.15s;
+    }
+    .contact-detail-value a:hover { color: var(--accent); }
+
+    .contact-divider {
+      height: 1px;
+      background: rgba(250,249,247,0.08);
+      margin: 48px 0;
+    }
+    .contact-guarantee {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+    .contact-guarantee-item {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      font-size: 14px;
+      color: rgba(250,249,247,0.6);
+      line-height: 1.5;
+    }
+    .contact-guarantee-item::before {
+      content: '✓';
+      background: linear-gradient(135deg,#2541e8,#00e5c8);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      font-weight: 700;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    /* Right panel — form */
+    .contact-right {
+      background: var(--bg);
+      padding: 80px clamp(32px, 6vw, 80px);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .contact-form-header {
+      margin-bottom: 40px;
+    }
+    .contact-form-header h2 {
+      font-family: var(--font-display);
+      font-size: clamp(24px, 3vw, 36px);
+      font-weight: 600;
+      letter-spacing: -0.03em;
+      margin-top: 10px;
+    }
+
+    /* Form */
+    .form { display: flex; flex-direction: column; gap: 20px; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .form-group { display: flex; flex-direction: column; gap: 7px; }
+    .form-label {
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      color: var(--fg);
+    }
+    .form-label span { color: var(--accent); }
+    .form-input,
+    .form-select,
+    .form-textarea {
+      font-family: var(--font-body);
+      font-size: 15px;
+      color: var(--fg);
+      background: var(--white);
+      border: 1.5px solid var(--border-dark);
+      border-radius: var(--radius);
+      padding: 13px 16px;
+      transition: border-color 0.15s, box-shadow 0.15s;
+      outline: none;
+      width: 100%;
+      appearance: none;
+      -webkit-appearance: none;
+    }
+    .form-input::placeholder,
+    .form-textarea::placeholder { color: var(--fg-light); }
+    .form-input:focus,
+    .form-select:focus,
+    .form-textarea:focus {
+      border-color: #2541e8;
+      box-shadow: 0 0 0 3px rgba(37,65,232,0.08);
+    }
+    .form-textarea { resize: vertical; min-height: 120px; line-height: 1.6; }
+    .form-select { cursor: pointer; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 12 12' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M2 4l4 4 4-4' stroke='%23111009' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round' fill='none'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 14px center; background-size: 12px; padding-right: 40px; }
+    .form-submit {
+      margin-top: 4px;
+    }
+    .form-submit .btn { width: 100%; justify-content: center; }
+    .form-note {
+      text-align: center;
+      font-size: 12px;
+      color: var(--fg-light);
+      margin-top: 4px;
+    }
+    .form-status {
+      display: none;
+      border-radius: var(--radius);
+      padding: 12px 14px;
+      font-size: 13px;
+      line-height: 1.5;
+      text-align: center;
+    }
+    .form-status.is-error {
+      display: block;
+      background: #fff2f0;
+      border: 1px solid #ffd0ca;
+      color: #a32718;
+    }
+    .form-status.is-info {
+      display: block;
+      background: #eef4ff;
+      border: 1px solid #cddcff;
+      color: #2541e8;
+    }
+    .form-honeypot {
+      position: absolute;
+      left: -9999px;
+      width: 1px;
+      height: 1px;
+      opacity: 0;
+      pointer-events: none;
+    }
+    .form-submit .btn:disabled {
+      cursor: wait;
+      opacity: 0.72;
+    }
+
+    /* Success state */
+    .form-success {
+      display: none;
+      text-align: center;
+      padding: 48px 24px;
+    }
+    .form-success-icon {
+      width: 64px; height: 64px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, rgba(37,65,232,0.1), rgba(0,229,200,0.1));
+      display: flex; align-items: center; justify-content: center;
+      font-size: 28px;
+      margin: 0 auto 24px;
+    }
+    .form-success h3 {
+      font-family: var(--font-display);
+      font-size: 26px;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      margin-bottom: 12px;
+    }
+    .form-success p { font-size: 15px; color: var(--fg-muted); line-height: 1.7; }
+
+    @media (max-width: 900px) {
+      .contact-layout {
+        grid-template-columns: 1fr;
+        min-height: unset;
+      }
+      .contact-left { padding: 64px clamp(20px, 5vw, 60px); }
+      .contact-right { padding: 64px clamp(20px, 5vw, 60px); }
+      .form-row { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <script src="components/nav-footer.js"></script>
+
+  <main style="padding-top: var(--nav-h);">
+    <div class="contact-layout">
+
+      <!-- Left: Info -->
+      <div class="contact-left">
+        <div class="contact-left-inner">
+          <div class="eyebrow" style="color:var(--accent);">Let's talk</div>
+          <h1>Start your<br>project today.</h1>
+          <p>Book a free 30-minute strategy call. We'll give you an honest assessment of your idea and what it would take to ship it — no pitch, no pressure.</p>
+
+          <div class="contact-details">
+            <div class="contact-detail">
+              <div class="contact-detail-icon">✉</div>
+              <div>
+                <div class="contact-detail-label">Email</div>
+                <div class="contact-detail-value">
+                  <a href="mailto:support@aurorasystems.co.zw">support@aurorasystems.co.zw</a>
+                </div>
+              </div>
+            </div>
+            <div class="contact-detail">
+              <div class="contact-detail-icon">☎</div>
+              <div>
+                <div class="contact-detail-label">Phone</div>
+                <div class="contact-detail-value">
+                  <a href="tel:+2637804040000">+263 78 004 0000</a><br>
+                  <a href="tel:+16292765611">+1 (629) 276-5611</a>
+                </div>
+              </div>
+            </div>
+            <div class="contact-detail">
+              <div class="contact-detail-icon">◎</div>
+              <div>
+                <div class="contact-detail-label">Locations</div>
+                <div class="contact-detail-value">
+                  Harare, Zimbabwe &amp; Dover, Delaware, USA
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="contact-divider"></div>
+
+          <div class="contact-guarantee">
+            <div class="contact-guarantee-item">Response within 24 hours — guaranteed.</div>
+            <div class="contact-guarantee-item">Free 30-minute strategy session, no commitment.</div>
+            <div class="contact-guarantee-item">Honest advice even if we're not the right fit.</div>
+            <div class="contact-guarantee-item">NDA available before any sensitive conversation.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: Form -->
+      <div class="contact-right">
+        <div class="contact-form-header">
+          <div class="eyebrow" style="color:var(--accent);">Get in touch</div>
+          <h2>Tell us about<br>your project.</h2>
+        </div>
+
+        <form class="form" id="contact-form" novalidate>
+          <div class="form-honeypot" aria-hidden="true">
+            <label for="website">Website</label>
+            <input type="text" id="website" name="website" tabindex="-1" autocomplete="off" />
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="name">Full name <span>*</span></label>
+              <input class="form-input" type="text" id="name" name="name" placeholder="Jane Doe" required />
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="email">Email address <span>*</span></label>
+              <input class="form-input" type="email" id="email" name="email" placeholder="jane@company.com" required />
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="company">Company / Startup</label>
+              <input class="form-input" type="text" id="company" name="company" placeholder="Acme Inc." />
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="phone">Phone number</label>
+              <input class="form-input" type="tel" id="phone" name="phone" placeholder="+263 77 000 0000" />
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="service">What are you looking for? <span>*</span></label>
+            <select class="form-select" id="service" name="service" required>
+              <option value="" disabled selected>Select a service</option>
+              <option value="validation">Idea Validation Sprint</option>
+              <option value="design">UI / UX Design</option>
+              <option value="mobile">Mobile App Development</option>
+              <option value="web">Web Development</option>
+              <option value="software">Custom Software Development</option>
+              <option value="ai">AI & Automation</option>
+              <option value="full">Full Build (Strategy → Launch)</option>
+              <option value="other">Something else</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="budget">Approximate budget</label>
+            <select class="form-select" id="budget" name="budget">
+              <option value="" disabled selected>Select a range</option>
+              <option value="under5k">Under $5,000</option>
+              <option value="5-15k">$5,000 – $15,000</option>
+              <option value="15-50k">$15,000 – $50,000</option>
+              <option value="50-150k">$50,000 – $150,000</option>
+              <option value="150k+">$150,000+</option>
+              <option value="discuss">Prefer to discuss</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="message">Tell us about your project <span>*</span></label>
+            <textarea class="form-textarea" id="message" name="message" placeholder="What are you building? What problem does it solve? Where are you in the process?" required></textarea>
+          </div>
+          <div class="form-submit">
+            <button type="submit" class="btn btn-primary btn-lg" id="contact-submit">Send message →</button>
+          </div>
+          <div class="form-status" id="form-status" role="status" aria-live="polite"></div>
+          <div class="form-note">We respond within 24 hours. All conversations are confidential.</div>
+        </form>
+
+        <div class="form-success" id="form-success">
+          <div class="form-success-icon">✓</div>
+          <h3>Message received.</h3>
+          <p>We'll review your project details and reach out within 24 hours. Looking forward to connecting.</p>
+          <div style="margin-top:28px;">
+            <a href="portfolio.html" class="btn btn-outline btn-arrow">Explore our work while you wait</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <script>
+    document.getElementById('contact-form').addEventListener('submit', async function(e) {
+      e.preventDefault();
+      const form = document.getElementById('contact-form');
+      const success = document.getElementById('form-success');
+      const status = document.getElementById('form-status');
+      const submit = document.getElementById('contact-submit');
+
+      status.className = 'form-status';
+      status.textContent = '';
+
+      if (!form.checkValidity()) {
+        form.reportValidity();
+        return;
+      }
+
+      submit.disabled = true;
+      submit.textContent = 'Sending...';
+      status.className = 'form-status is-info';
+      status.textContent = 'Sending your message...';
+
+      const payload = Object.fromEntries(new FormData(form).entries());
+
+      try {
+        const response = await fetch('/api/contact', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload),
+        });
+
+        const result = await response.json().catch(() => ({}));
+
+        if (!response.ok) {
+          throw new Error(result.error || 'Something went wrong. Please try again.');
+        }
+
+        form.style.display = 'none';
+        success.style.display = 'block';
+      } catch (error) {
+        status.className = 'form-status is-error';
+        status.textContent = error.message || 'Something went wrong. Please try again.';
+        submit.disabled = false;
+        submit.textContent = 'Send message →';
+      }
+    });
+  </script>
+
+</body>
+</html>

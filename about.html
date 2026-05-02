@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en" class="page-about">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About — Aurora Systems</title>
+  <meta name="description" content="Aurora Systems is an innovation agency from Zimbabwe building the world's next digital products — strategy, design, engineering, and AI." />
+  <link rel="stylesheet" href="styles/main.css" />
+  <style>
+    .page-hero { padding: calc(var(--nav-h) + 80px) 0 80px; border-bottom: 1px solid var(--border); }
+
+    /* Mission section */
+    .mission-section { padding: var(--section-pad) 0; }
+    .mission-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: start;
+    }
+    .mission-section h2 {
+      font-family: var(--font-display);
+      font-size: clamp(32px, 4vw, 52px);
+      font-weight: 600;
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+    }
+    .mission-section p {
+      font-size: 17px;
+      line-height: 1.8;
+      color: var(--fg-muted);
+      margin-top: 20px;
+    }
+    .values-list { display: flex; flex-direction: column; gap: 0; margin-top: 48px; }
+    .value-item {
+      display: flex;
+      gap: 20px;
+      padding: 24px 0;
+      border-bottom: 1px solid var(--border);
+      align-items: flex-start;
+    }
+    .value-item:first-child { border-top: 1px solid var(--border); }
+    .value-icon {
+      width: 40px; height: 40px;
+      border-radius: 8px;
+      background: rgba(37,65,232,0.06);
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+      margin-top: 2px;
+      border: 1px solid rgba(37,65,232,0.12);
+    }
+    .value-item h4 {
+      font-family: var(--font-display);
+      font-size: 17px;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      margin-bottom: 4px;
+    }
+    .value-item p { font-size: 14px; line-height: 1.65; color: var(--fg-muted); margin-top: 0; }
+    .mission-visual {
+      background: var(--fg);
+      border-radius: var(--radius-lg);
+      padding: 48px;
+      color: var(--white);
+      position: sticky;
+      top: calc(var(--nav-h) + 32px);
+      overflow: hidden;
+    }
+    .mission-visual::before {
+      content: '';
+      position: absolute;
+      top: -80px; right: -80px;
+      width: 320px; height: 320px;
+      border-radius: 50%;
+      background: radial-gradient(circle, oklch(58% 0.22 35 / 0.2) 0%, transparent 70%);
+    }
+    .mission-visual-inner { position: relative; z-index: 1; }
+    .mission-quote {
+      font-family: var(--font-display);
+      font-size: clamp(22px, 2.5vw, 30px);
+      font-weight: 600;
+      letter-spacing: -0.03em;
+      line-height: 1.3;
+      color: var(--white);
+      margin-bottom: 32px;
+    }
+    .mission-quote em { font-style: normal; background: linear-gradient(135deg,#2541e8,#00e5c8); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+    .locations-section .eyebrow { -webkit-text-fill-color: unset !important; background: linear-gradient(135deg,#2541e8,#00e5c8); -webkit-background-clip: text; background-clip: text; }
+    .mission-stat-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin-top: 32px;
+    }
+    .m-stat-num {
+      font-family: var(--font-display);
+      font-size: 44px;
+      font-weight: 700;
+      letter-spacing: -0.05em;
+      color: var(--white);
+      line-height: 1;
+    }
+    .m-stat-num span { background: linear-gradient(135deg,#2541e8,#00e5c8); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+    .m-stat-label { font-size: 13px; color: rgba(250,249,247,0.5); margin-top: 6px; }
+
+    /* Team section */
+    .team-section { background: var(--bg-2); padding: var(--section-pad) 0; }
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+      margin-top: 56px;
+    }
+    .team-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      transition: all 0.2s ease;
+    }
+    .team-card:hover {
+      border-color: var(--border-dark);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.07);
+      transform: translateY(-3px);
+    }
+    .team-card-img {
+      width: 100%;
+      aspect-ratio: 1;
+      background: var(--bg-2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-display);
+      font-size: 40px;
+      font-weight: 700;
+      color: var(--fg-muted);
+      border-bottom: 1px solid var(--border);
+      position: relative;
+      overflow: hidden;
+    }
+    .team-card-body { padding: 20px; }
+    .team-card h3 {
+      font-family: var(--font-display);
+      font-size: 17px;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      margin-bottom: 4px;
+    }
+    .team-card-role { font-size: 13px; font-weight: 600; margin-bottom: 8px; background: linear-gradient(135deg,#2541e8,#00e5c8); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+    .team-card p { font-size: 13px; color: var(--fg-muted); line-height: 1.6; }
+    .team-card-links {
+      display: flex;
+      gap: 12px;
+      margin-top: 14px;
+    }
+    .team-card-links a {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--fg-muted);
+      text-decoration: none;
+      transition: color 0.15s;
+    }
+    .team-card-links a:hover { color: var(--accent); }
+
+    /* Story / Timeline */
+    .story-section { padding: var(--section-pad) 0; }
+    .story-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: start;
+    }
+    .timeline { display: flex; flex-direction: column; gap: 0; margin-top: 48px; }
+    .timeline-item {
+      display: flex;
+      gap: 24px;
+      padding-bottom: 40px;
+      position: relative;
+    }
+    .timeline-item:not(:last-child)::before {
+      content: '';
+      position: absolute;
+      left: 19px;
+      top: 40px;
+      bottom: 0;
+      width: 1px;
+      background: var(--border);
+    }
+    .timeline-dot {
+      width: 40px; height: 40px;
+      border-radius: 50%;
+      border: 2px solid var(--border-dark);
+      background: var(--white);
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--fg-muted);
+      z-index: 1;
+    }
+    .timeline-item.current .timeline-dot {
+      background: var(--fg);
+      border-color: var(--fg);
+      color: var(--white);
+    }
+    .timeline-year {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      background: linear-gradient(135deg,#2541e8,#00e5c8);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      display: inline-block;
+      margin-bottom: 6px;
+    }
+    .timeline-item h4 {
+      font-family: var(--font-display);
+      font-size: 18px;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      margin-bottom: 6px;
+    }
+    .timeline-item p { font-size: 14px; line-height: 1.65; color: var(--fg-muted); }
+
+    /* Locations */
+    .locations-section { background: var(--fg); color: var(--white); padding: var(--section-pad) 0; }
+    .locations-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+      margin-top: 48px;
+    }
+    .location-card {
+      background: rgba(250,249,247,0.04);
+      border: 1px solid rgba(250,249,247,0.08);
+      border-radius: var(--radius-lg);
+      padding: 36px;
+      transition: all 0.2s;
+    }
+    .location-card:hover {
+      background: rgba(250,249,247,0.07);
+      border-color: rgba(250,249,247,0.15);
+    }
+    .location-flag { font-size: 36px; margin-bottom: 16px; }
+    .location-card h3 {
+      font-family: var(--font-display);
+      font-size: 22px;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      color: var(--white);
+      margin-bottom: 8px;
+    }
+    .location-card p { font-size: 14px; color: rgba(250,249,247,0.5); line-height: 1.7; }
+    .location-status {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12px;
+      font-weight: 700;
+      color: #00e5c8;
+      margin-top: 16px;
+    }
+    .location-status::before {
+      content: '';
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: #00e5c8;
+    }
+
+    @media (max-width: 900px) {
+      .mission-grid, .story-grid { grid-template-columns: 1fr; gap: 48px; }
+      .mission-visual { position: static; }
+      .team-grid { grid-template-columns: repeat(2, 1fr); }
+      .locations-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 600px) {
+      .team-grid { grid-template-columns: 1fr 1fr; }
+      .mission-stat-row { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <script src="components/nav-footer.js"></script>
+
+  <main style="padding-top: var(--nav-h);">
+
+    <!-- Page Hero -->
+    <section class="page-hero">
+      <div class="container">
+        <div class="eyebrow">About Aurora</div>
+        <h1 class="display-1" style="margin-top:16px; max-width:800px;">We're builders.<br>Not consultants.</h1>
+        <p class="body-lg" style="margin-top:24px; max-width:560px;">Aurora Systems is a global innovation agency building digital products that work in the real world for founders and enterprises who refuse to settle for average.</p>
+      </div>
+    </section>
+
+    <!-- Mission -->
+    <section class="mission-section">
+      <div class="container">
+        <div class="mission-grid">
+          <div>
+            <div class="eyebrow reveal">Our mission</div>
+            <h2 class="reveal reveal-delay-1">Build products that<br>move the world<br>forward.</h2>
+            <p class="reveal reveal-delay-2">We believe the world's most important digital products of the next decade will be built by ambitious founders in high-growth markets. We exist to make that happen faster, smarter, and with global reach.</p>
+            <div class="values-list">
+              <div class="value-item reveal reveal-delay-2">
+                <div class="value-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2541e8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="4"/></svg></div>
+                <div>
+                  <h4>Outcome-obsessed</h4>
+                  <p>We measure success by your results, not our deliverables. Revenue, retention, adoption — that's the job.</p>
+                </div>
+              </div>
+              <div class="value-item reveal reveal-delay-3">
+                <div class="value-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2541e8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></div>
+                <div>
+                  <h4>Speed with substance</h4>
+                  <p>Fast doesn't mean reckless. We move quickly because our process is tight — not because we skip the important steps.</p>
+                </div>
+              </div>
+              <div class="value-item reveal reveal-delay-4">
+                <div class="value-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2541e8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96-.46 2.5 2.5 0 0 1-2.96-3.08 3 3 0 0 1-.34-5.58 2.5 2.5 0 0 1 1.32-4.84A2.5 2.5 0 0 1 9.5 2"/><path d="M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96-.46 2.5 2.5 0 0 0 2.96-3.08 3 3 0 0 0 .34-5.58 2.5 2.5 0 0 0-1.32-4.84A2.5 2.5 0 0 0 14.5 2"/></svg></div>
+                <div>
+                  <h4>AI-native thinking</h4>
+                  <p>Every problem we solve, we ask: how does AI make this better? It's not a feature — it's a lens.</p>
+                </div>
+              </div>
+              <div class="value-item reveal reveal-delay-5">
+                <div class="value-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2541e8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></div>
+                <div>
+                  <h4>Radical honesty</h4>
+                  <p>We'll tell you when your idea needs work. Partners who challenge you are worth more than ones who agree with everything.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="reveal reveal-delay-2">
+            <div class="mission-visual">
+              <div class="mission-visual-inner">
+                <div class="mission-quote">"The world's next great digital products are built by founders who refuse to wait for <em>permission</em>."</div>
+                <div style="font-size:13px; color:rgba(250,249,247,0.4); margin-bottom:32px;">Aurora Systems, founded 2019</div>
+                <div style="height:1px; background:rgba(250,249,247,0.08); margin-bottom:32px;"></div>
+                <div class="mission-stat-row">
+                  <div>
+                    <div class="m-stat-num">30<span>+</span></div>
+                    <div class="m-stat-label">Products shipped</div>
+                  </div>
+                  <div>
+                    <div class="m-stat-num">5<span>+</span></div>
+                    <div class="m-stat-label">Years in business</div>
+                  </div>
+                  <div>
+                    <div class="m-stat-num">2</div>
+                    <div class="m-stat-label">Global offices</div>
+                  </div>
+                  <div>
+                    <div class="m-stat-num">∞</div>
+                    <div class="m-stat-label">Ambition</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Team -->
+    <section class="team-section">
+      <div class="container">
+        <div class="reveal">
+          <div class="eyebrow">The team</div>
+          <h2 class="display-2" style="margin-top:16px; max-width:540px;">Real people. Accountable for your outcome.</h2>
+        </div>
+        <div class="team-grid">
+          <div class="team-card reveal">
+            <div class="team-card-img" style="background: linear-gradient(135deg, oklch(25% 0.08 35), oklch(16% 0.05 35));">
+              <span style="color:rgba(255,255,255,0.25); font-size:48px; font-family: var(--font-display);">N</span>
+            </div>
+            <div class="team-card-body">
+              <h3>Ngoni Ratse</h3>
+              <div class="team-card-role">Founder & CEO</div>
+              <p>Product visionary and engineer. Built Aurora from the ground up to prove African tech can compete globally.</p>
+              <div class="team-card-links">
+                <a href="#">LinkedIn →</a>
+                <a href="#">Twitter →</a>
+              </div>
+            </div>
+          </div>
+          <div class="team-card reveal reveal-delay-1">
+            <div class="team-card-img" style="background: linear-gradient(135deg, oklch(22% 0.07 200), oklch(14% 0.04 200));">
+              <span style="color:rgba(255,255,255,0.25); font-size:48px; font-family: var(--font-display);">T</span>
+            </div>
+            <div class="team-card-body">
+              <h3>Technical Lead</h3>
+              <div class="team-card-role">Head of Engineering</div>
+              <p>Full-stack engineer with a deep background in scalable architecture and AI systems integration.</p>
+              <div class="team-card-links">
+                <a href="#">LinkedIn →</a>
+              </div>
+            </div>
+          </div>
+          <div class="team-card reveal reveal-delay-2">
+            <div class="team-card-img" style="background: linear-gradient(135deg, oklch(20% 0.07 310), oklch(13% 0.04 310));">
+              <span style="color:rgba(255,255,255,0.25); font-size:48px; font-family: var(--font-display);">D</span>
+            </div>
+            <div class="team-card-body">
+              <h3>Design Lead</h3>
+              <div class="team-card-role">Head of Design</div>
+              <p>Product designer who obsesses over the gap between beautiful and functional. Design that converts.</p>
+              <div class="team-card-links">
+                <a href="#">LinkedIn →</a>
+                <a href="#">Dribbble →</a>
+              </div>
+            </div>
+          </div>
+          <div class="team-card reveal reveal-delay-3">
+            <div class="team-card-img" style="background: linear-gradient(135deg, oklch(22% 0.05 155), oklch(14% 0.03 155));">
+              <span style="color:rgba(255,255,255,0.25); font-size:48px; font-family: var(--font-display);">S</span>
+            </div>
+            <div class="team-card-body">
+              <h3>Strategy Lead</h3>
+              <div class="team-card-role">Head of Product Strategy</div>
+              <p>Former founder with exits. Brings real-world product intuition to every engagement — no ivory tower consulting.</p>
+              <div class="team-card-links">
+                <a href="#">LinkedIn →</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div style="margin-top:40px; text-align:center;">
+          <a href="contact.html" class="btn btn-outline btn-arrow reveal">Join our team</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Story / Timeline -->
+    <section class="story-section">
+      <div class="container">
+        <div class="story-grid">
+          <div>
+            <div class="eyebrow reveal">Our story</div>
+            <h2 class="display-2 reveal reveal-delay-1" style="margin-top:16px; max-width:480px;">Built for the world,<br>from day one.</h2>
+            <p class="body-lg reveal reveal-delay-2" style="margin-top:20px;">Aurora was started with a simple conviction: ambitious founders deserve a product partner that thinks as big as they do. We set out to be that partner.</p>
+          </div>
+          <div class="timeline">
+            <div class="timeline-item reveal">
+              <div class="timeline-dot">19</div>
+              <div>
+                <div class="timeline-year">2019</div>
+                <h4>Aurora Systems founded</h4>
+                <p>Incorporated as a software studio with a clear mission: build world-class digital products for founders who refuse to settle for average.</p>
+              </div>
+            </div>
+            <div class="timeline-item reveal reveal-delay-1">
+              <div class="timeline-dot">21</div>
+              <div>
+                <div class="timeline-year">2021</div>
+                <h4>First fintech product</h4>
+                <p>Shipped Bleu, our first neobank product. Proved that world-class fintech UX could be designed and built by a lean, ambitious team.</p>
+              </div>
+            </div>
+            <div class="timeline-item reveal reveal-delay-2">
+              <div class="timeline-dot">23</div>
+              <div>
+                <div class="timeline-year">2023</div>
+                <h4>US expansion & AI pivot</h4>
+                <p>Opened US operations in Delaware. Reorganised as Attribute AI, LLC with Aurora as the product innovation brand. Went AI-native across all services.</p>
+              </div>
+            </div>
+            <div class="timeline-item current reveal reveal-delay-3">
+              <div class="timeline-dot">26</div>
+              <div>
+                <div class="timeline-year">2026 — Today</div>
+                <h4>30+ products. Global clients.</h4>
+                <p>Operating across two continents, shipping products for founders and enterprises from Harare to Silicon Valley. The mission hasn't changed — only the scale.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Locations -->
+    <section class="locations-section">
+      <div class="container">
+        <div class="eyebrow reveal">Where we are</div>
+        <h2 class="display-2 reveal reveal-delay-1" style="color:var(--white); margin-top:16px; max-width:500px;">Two continents.<br>One mission.</h2>
+        <div class="locations-grid">
+          <div class="location-card reveal reveal-delay-1">
+            <div class="location-flag">🇿🇼</div>
+            <h3>Harare Office</h3>
+            <p>258 Smuts Rd, Waterfalls<br>Harare<br><br>Our engineering hub and operational headquarters.</p>
+            <div class="location-status">Engineering HQ</div>
+          </div>
+          <div class="location-card reveal reveal-delay-2">
+            <div class="location-flag">🇺🇸</div>
+            <h3>Dover, Delaware, USA</h3>
+            <p>1111B S Governors Ave, STE 37386<br>Dover, Delaware<br>United States of America</p>
+            <div class="location-status">US Office</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section style="padding: var(--section-pad) 0; text-align:center;">
+      <div class="container">
+        <div class="eyebrow reveal" style="color:var(--accent);">Work with us</div>
+        <h2 class="display-2 reveal reveal-delay-1" style="margin-top:16px; max-width:600px; margin-left:auto; margin-right:auto;">Ready to build with a team that cares about your outcome?</h2>
+        <div style="margin-top:40px; display:flex; justify-content:center; gap:14px; flex-wrap:wrap;" class="reveal reveal-delay-2">
+          <a href="contact.html" class="btn btn-primary btn-lg btn-arrow">Start a project</a>
+          <a href="portfolio.html" class="btn btn-outline btn-lg">See our work</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+</body>
+</html>
