@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(grep -E '\\\\.\\(ts|tsx|js|jsx|env|json\\)$')",
+      "WebFetch(domain:share.google)",
+      "WebFetch(domain:www.google.com)",
+      "Bash(node server.js)",
+      "Bash(curl -s http://localhost:4173/)"
+    ]
+  }
+}

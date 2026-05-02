@@ -3,6 +3,9 @@ const fs = require('node:fs/promises');
 const path = require('node:path');
 const { pathToFileURL } = require('node:url');
 
+// Load .env if present (Node 20.6+ built-in)
+try { require('node:fs').readFileSync(path.join(__dirname, '.env'), 'utf8').split('\n').forEach(line => { const [k, ...v] = line.split('='); if (k && k.trim() && !k.trim().startsWith('#')) process.env[k.trim()] ??= v.join('=').trim().replace(/^"|"$/g, ''); }); } catch {}
+
 const root = __dirname;
 const port = Number(process.env.PORT || 4173);
 
