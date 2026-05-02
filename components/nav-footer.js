@@ -68,6 +68,15 @@
       nav.classList.toggle('scrolled', window.scrollY > 20);
     }, { passive: true });
 
+    // Services dropdown
+    const dropdown = document.querySelector('.nav-dropdown');
+    const toggle = document.querySelector('.nav-dropdown-toggle');
+    toggle.addEventListener('click', (e) => {
+      e.stopPropagation();
+      dropdown.classList.toggle('open');
+    });
+    document.addEventListener('click', () => dropdown.classList.remove('open'));
+
     // Hamburger
     const btn = document.getElementById('hamburger-btn');
     const menu = document.getElementById('mobile-menu');
