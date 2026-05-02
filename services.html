@@ -32,12 +32,6 @@
       gap: 80px;
       align-items: start;
     }
-    .service-detail:nth-child(even) .service-detail-grid {
-      direction: rtl;
-    }
-    .service-detail:nth-child(even) .service-detail-grid > * {
-      direction: ltr;
-    }
     .service-detail-icon {
       width: 64px; height: 64px;
       border-radius: 14px;
@@ -58,12 +52,12 @@
       font-size: 17px;
       line-height: 1.75;
       color: var(--fg-muted);
-      margin-bottom: 32px;
     }
     .service-features {
       display: flex;
       flex-direction: column;
       gap: 12px;
+      margin-bottom: 36px;
     }
     .service-feature {
       display: flex;
@@ -80,26 +74,6 @@
       flex-shrink: 0;
       margin-top: 1px;
     }
-    .service-visual {
-      background: var(--bg-2);
-      border-radius: var(--radius-lg);
-      border: 1px solid var(--border);
-      aspect-ratio: 4/3;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: monospace;
-      font-size: 13px;
-      color: var(--fg-light);
-      letter-spacing: 0.03em;
-      position: relative;
-      overflow: hidden;
-    }
-    .service-visual-dark {
-      background: var(--fg);
-      border-color: transparent;
-    }
-    .service-visual-dark span { color: rgba(250,249,247,0.2); }
 
     /* ── TECH STACK ─────────────────────────────────── */
     .tech-section { background: var(--bg); border-top: 1px solid var(--border); }
@@ -207,7 +181,6 @@
     @media (max-width: 900px) {
       .page-hero-inner,
       .service-detail-grid { grid-template-columns: 1fr; gap: 40px; }
-      .service-detail:nth-child(even) .service-detail-grid { direction: ltr; }
       .tech-grid { grid-template-columns: repeat(3, 1fr); }
       .pricing-grid { grid-template-columns: 1fr; max-width: 480px; }
     }
@@ -249,7 +222,9 @@
             <div class="eyebrow reveal">Custom Software Development</div>
             <h2 class="reveal reveal-delay-1">Built for your business. Not off-the-shelf.</h2>
             <p class="service-detail-desc reveal reveal-delay-2">Generic software creates generic results. We engineer bespoke platforms, internal tools, and digital ecosystems that fit your exact workflow — and scale as you do.</p>
-            <div class="service-features reveal reveal-delay-3">
+          </div>
+          <div class="reveal reveal-delay-2">
+            <div class="service-features">
               <div class="service-feature">Full-stack web and backend development</div>
               <div class="service-feature">Scalable cloud-native architecture</div>
               <div class="service-feature">Third-party API integrations</div>
@@ -257,14 +232,7 @@
               <div class="service-feature">Security-first engineering practices</div>
               <div class="service-feature">Ongoing maintenance and iteration</div>
             </div>
-            <div style="margin-top:36px;">
-              <a href="contact.html" class="btn btn-primary btn-arrow reveal reveal-delay-4">Discuss your project</a>
-            </div>
-          </div>
-          <div class="reveal reveal-delay-2">
-            <div class="service-visual service-visual-dark">
-              <span>[ custom software mockup ]</span>
-            </div>
+            <a href="contact.html" class="btn btn-primary btn-arrow">Discuss your project</a>
           </div>
         </div>
       </div>
@@ -279,22 +247,17 @@
             <div class="eyebrow reveal">Mobile App Development</div>
             <h2 class="reveal reveal-delay-1">Apps users open every day.</h2>
             <p class="service-detail-desc reveal reveal-delay-2">Consumer or enterprise, iOS or Android — we build mobile products that feel native, perform under real-world conditions, and keep users coming back.</p>
-            <div class="service-features reveal reveal-delay-3">
+          </div>
+          <div class="reveal reveal-delay-2">
+            <div class="service-features">
               <div class="service-feature">iOS and Android native development</div>
               <div class="service-feature">Cross-platform React Native solutions</div>
               <div class="service-feature">Offline-first architecture for low-connectivity markets</div>
-              <div class="service-feature">App Store & Play Store optimisation</div>
+              <div class="service-feature">App Store &amp; Play Store optimisation</div>
               <div class="service-feature">Push notifications and engagement systems</div>
               <div class="service-feature">Performance and battery optimisation</div>
             </div>
-            <div style="margin-top:36px;">
-              <a href="contact.html" class="btn btn-primary btn-arrow reveal reveal-delay-4">Build your app</a>
-            </div>
-          </div>
-          <div class="reveal reveal-delay-2">
-            <div class="service-visual" style="background: linear-gradient(135deg, oklch(25% 0.08 240), oklch(15% 0.04 240));">
-              <span style="color:rgba(255,255,255,0.2); font-family:monospace; font-size:12px;">[ mobile app screens ]</span>
-            </div>
+            <a href="contact.html" class="btn btn-primary btn-arrow">Build your app</a>
           </div>
         </div>
       </div>
@@ -309,7 +272,9 @@
             <div class="eyebrow reveal">UI / UX Design</div>
             <h2 class="reveal reveal-delay-1">Design that converts, not just impresses.</h2>
             <p class="service-detail-desc reveal reveal-delay-2">We design for real users in real conditions. Beautiful and functional aren't opposites — they're the standard. Every screen is a decision that affects revenue.</p>
-            <div class="service-features reveal reveal-delay-3">
+          </div>
+          <div class="reveal reveal-delay-2">
+            <div class="service-features">
               <div class="service-feature">User research and journey mapping</div>
               <div class="service-feature">Wireframing and rapid prototyping</div>
               <div class="service-feature">High-fidelity UI design systems</div>
@@ -317,14 +282,7 @@
               <div class="service-feature">Design-to-development handoff</div>
               <div class="service-feature">Accessibility (WCAG) compliance</div>
             </div>
-            <div style="margin-top:36px;">
-              <a href="contact.html" class="btn btn-primary btn-arrow reveal reveal-delay-4">Design your product</a>
-            </div>
-          </div>
-          <div class="reveal reveal-delay-2">
-            <div class="service-visual" style="background: linear-gradient(135deg, oklch(96% 0.04 35), oklch(92% 0.06 35));">
-              <span style="color:oklch(70% 0.12 35); font-family:monospace; font-size:12px;">[ UI design mockup ]</span>
-            </div>
+            <a href="contact.html" class="btn btn-primary btn-arrow">Design your product</a>
           </div>
         </div>
       </div>
@@ -336,10 +294,12 @@
         <div class="service-detail-grid">
           <div>
             <div class="service-detail-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="#00e5c8" stroke="#2541e8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill-opacity="0.3"><path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96-.46 2.5 2.5 0 0 1-2.96-3.08 3 3 0 0 1-.34-5.58 2.5 2.5 0 0 1 1.32-4.84A2.5 2.5 0 0 1 9.5 2"/><path d="M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96-.46 2.5 2.5 0 0 0 2.96-3.08 3 3 0 0 0 .34-5.58 2.5 2.5 0 0 0-1.32-4.84A2.5 2.5 0 0 0 14.5 2"/></svg></div>
-            <div class="eyebrow reveal">AI & Automation</div>
+            <div class="eyebrow reveal">AI &amp; Automation</div>
             <h2 class="reveal reveal-delay-1" style="color:var(--white);">Scale output. Not headcount.</h2>
             <p class="service-detail-desc reveal reveal-delay-2" style="color:rgba(250,249,247,0.6);">We build AI capabilities that make your product smarter and your team more powerful. From intelligent automation to custom LLM integrations — AI that delivers measurable ROI.</p>
-            <div class="service-features reveal reveal-delay-3">
+          </div>
+          <div class="reveal reveal-delay-2">
+            <div class="service-features">
               <div class="service-feature" style="color:rgba(250,249,247,0.65);">Custom AI agent development</div>
               <div class="service-feature" style="color:rgba(250,249,247,0.65);">LLM integration and fine-tuning</div>
               <div class="service-feature" style="color:rgba(250,249,247,0.65);">Intelligent workflow automation</div>
@@ -347,14 +307,7 @@
               <div class="service-feature" style="color:rgba(250,249,247,0.65);">Recommendation and prediction systems</div>
               <div class="service-feature" style="color:rgba(250,249,247,0.65);">AI strategy and roadmapping</div>
             </div>
-            <div style="margin-top:36px;">
-              <a href="contact.html" class="btn btn-accent btn-arrow reveal reveal-delay-4">Explore AI for your product</a>
-            </div>
-          </div>
-          <div class="reveal reveal-delay-2">
-            <div class="service-visual service-visual-dark" style="background: rgba(250,249,247,0.04); border-color: rgba(250,249,247,0.08);">
-              <span>[ AI workflow diagram ]</span>
-            </div>
+            <a href="contact.html" class="btn btn-accent btn-arrow">Explore AI for your product</a>
           </div>
         </div>
       </div>
@@ -369,7 +322,9 @@
             <div class="eyebrow reveal">Web Development</div>
             <h2 class="reveal reveal-delay-1">Fast. Scalable. Built to last.</h2>
             <p class="service-detail-desc reveal reveal-delay-2">From marketing sites to complex SaaS platforms, we build web products that perform at scale. Modern frameworks, server-side rendering, and infrastructure that doesn't break under load.</p>
-            <div class="service-features reveal reveal-delay-3">
+          </div>
+          <div class="reveal reveal-delay-2">
+            <div class="service-features">
               <div class="service-feature">Next.js, React, and modern web stacks</div>
               <div class="service-feature">Headless CMS and content management</div>
               <div class="service-feature">E-commerce and payment integration</div>
@@ -377,14 +332,7 @@
               <div class="service-feature">Cloud deployment and DevOps</div>
               <div class="service-feature">Web3 and blockchain integrations</div>
             </div>
-            <div style="margin-top:36px;">
-              <a href="contact.html" class="btn btn-primary btn-arrow reveal reveal-delay-4">Build your web product</a>
-            </div>
-          </div>
-          <div class="reveal reveal-delay-2">
-            <div class="service-visual" style="background: linear-gradient(135deg, oklch(92% 0.03 200), oklch(88% 0.04 200));">
-              <span style="color:oklch(55% 0.12 200); font-family:monospace; font-size:12px;">[ web platform mockup ]</span>
-            </div>
+            <a href="contact.html" class="btn btn-primary btn-arrow">Build your web product</a>
           </div>
         </div>
       </div>
@@ -399,7 +347,9 @@
             <div class="eyebrow reveal">Idea Validation</div>
             <h2 class="reveal reveal-delay-1">Know it will work. Before it costs you.</h2>
             <p class="service-detail-desc reveal reveal-delay-2">The most expensive mistake is building the wrong thing. We run rapid validation sprints that test your biggest assumptions with real users — saving months and significant capital.</p>
-            <div class="service-features reveal reveal-delay-3">
+          </div>
+          <div class="reveal reveal-delay-2">
+            <div class="service-features">
               <div class="service-feature">Market and competitor research</div>
               <div class="service-feature">Assumption mapping and risk scoring</div>
               <div class="service-feature">Rapid prototype testing with target users</div>
@@ -407,14 +357,7 @@
               <div class="service-feature">Go/no-go recommendation with data</div>
               <div class="service-feature">Validated roadmap and build brief</div>
             </div>
-            <div style="margin-top:36px;">
-              <a href="contact.html" class="btn btn-primary btn-arrow reveal reveal-delay-4">Validate your idea</a>
-            </div>
-          </div>
-          <div class="reveal reveal-delay-2">
-            <div class="service-visual">
-              <span style="font-family:monospace; font-size:12px;">[ validation framework ]</span>
-            </div>
+            <a href="contact.html" class="btn btn-primary btn-arrow">Validate your idea</a>
           </div>
         </div>
       </div>
@@ -429,7 +372,9 @@
             <div class="eyebrow reveal">Startup Advisory &amp; Investment</div>
             <h2 class="reveal reveal-delay-1">We back bold founders. With more than capital.</h2>
             <p class="service-detail-desc reveal reveal-delay-2">For the right founders, Aurora goes beyond services. We offer strategic advisory, network access, and investment connections to help you raise, grow, and scale. Founder-first, always.</p>
-            <div class="service-features reveal reveal-delay-3">
+          </div>
+          <div class="reveal reveal-delay-2">
+            <div class="service-features">
               <div class="service-feature">Startup strategy and go-to-market planning</div>
               <div class="service-feature">Fundraising preparation and pitch coaching</div>
               <div class="service-feature">Investor network introductions</div>
@@ -438,22 +383,14 @@
               <div class="service-feature">Ongoing advisory and board-level support</div>
             </div>
             <!-- Microsoft for Startups badge -->
-            <div class="reveal reveal-delay-4" style="margin-top:36px; display:flex; align-items:center; gap:16px; flex-wrap:wrap; padding:20px 24px; background:rgba(37,65,232,0.04); border:1px solid rgba(37,65,232,0.12); border-radius:10px;">
+            <div style="margin-bottom:28px; display:flex; align-items:center; gap:16px; flex-wrap:wrap; padding:20px 24px; background:rgba(37,65,232,0.04); border:1px solid rgba(37,65,232,0.12); border-radius:10px;">
               <svg width="24" height="24" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="10" height="10" fill="#F25022"/><rect x="11" width="10" height="10" fill="#7FBA00"/><rect y="11" width="10" height="10" fill="#00A4EF"/><rect x="11" y="11" width="10" height="10" fill="#FFB900"/></svg>
               <div>
                 <div style="font-size:11px; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; color:var(--fg-light); margin-bottom:3px;">Sponsored by</div>
                 <div style="font-size:15px; font-weight:700; color:var(--fg);">Microsoft for Startups</div>
               </div>
-              <div style="margin-left:auto; font-size:13px; color:var(--fg-muted); max-width:280px; line-height:1.5;">Aurora clients get access to Azure credits, AI tools, and the global Microsoft startup network.</div>
             </div>
-            <div style="margin-top:28px;">
-              <a href="contact.html" class="btn btn-primary btn-arrow reveal reveal-delay-5">Talk to us about advisory</a>
-            </div>
-          </div>
-          <div class="reveal reveal-delay-2">
-            <div class="service-visual" style="background: linear-gradient(135deg, rgba(37,65,232,0.08), rgba(0,229,200,0.08)); border-color: rgba(37,65,232,0.12);">
-              <span style="color:rgba(37,65,232,0.3); font-family:monospace; font-size:12px;">[ startup advisory visual ]</span>
-            </div>
+            <a href="contact.html" class="btn btn-primary btn-arrow">Talk to us about advisory</a>
           </div>
         </div>
       </div>
