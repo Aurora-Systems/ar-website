@@ -103,7 +103,7 @@
               <div class="footer-logo-mark">${LOGO_IMG}</div>
               Aurora
             </div>
-            <p>We build the world's next digital products — from bold ideas to revenue-ready platforms. Strategy, design, engineering, AI.</p>
+            <p>We build the world's next digital products, from bold ideas to revenue-ready platforms. Strategy, design, engineering, AI.</p>
             <div style="margin-top:28px; display:flex; gap:16px; flex-wrap:wrap;">
               <a href="contact.html" class="btn btn-accent btn-sm btn-arrow">Start a project</a>
             </div>
