@@ -39,6 +39,17 @@
               </div>
             </div>
           </li>
+          <li>
+            <div class="nav-dropdown">
+              <button class="nav-dropdown-toggle">
+                Cyber Security
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </button>
+              <div class="nav-dropdown-menu">
+                <a href="php2shell-check.html" class="nav-dropdown-item">PHP2Shell Check</a>
+              </div>
+            </div>
+          </li>
           <li><a href="portfolio.html" class="${active === 'portfolio' ? 'active nav-portfolio' : 'nav-portfolio'}">Work</a></li>
           <li><a href="about.html" class="${active === 'about' ? 'active nav-about' : 'nav-about'}">About</a></li>
           <li><a href="blog.html" class="${active === 'blog' ? 'active nav-blog' : 'nav-blog'}">Blog</a></li>
@@ -55,6 +66,7 @@
     <div class="mobile-menu" id="mobile-menu">
       <a href="index.html">Home</a>
       <a href="services.html">Services</a>
+      <a href="php2shell-check.html">Cyber Security</a>
       <a href="portfolio.html">Work</a>
       <a href="about.html">About</a>
       <a href="blog.html">Blog</a>
@@ -68,14 +80,20 @@
       nav.classList.toggle('scrolled', window.scrollY > 20);
     }, { passive: true });
 
-    // Services dropdown
-    const dropdown = document.querySelector('.nav-dropdown');
-    const toggle = document.querySelector('.nav-dropdown-toggle');
-    toggle.addEventListener('click', (e) => {
-      e.stopPropagation();
-      dropdown.classList.toggle('open');
+    // Nav dropdowns (Services, Cyber Security)
+    const dropdowns = document.querySelectorAll('.nav-dropdown');
+    dropdowns.forEach((dropdown) => {
+      const toggle = dropdown.querySelector('.nav-dropdown-toggle');
+      toggle.addEventListener('click', (e) => {
+        e.stopPropagation();
+        // Close other open dropdowns before toggling this one
+        dropdowns.forEach((d) => { if (d !== dropdown) d.classList.remove('open'); });
+        dropdown.classList.toggle('open');
+      });
     });
-    document.addEventListener('click', () => dropdown.classList.remove('open'));
+    document.addEventListener('click', () => {
+      dropdowns.forEach((d) => d.classList.remove('open'));
+    });
 
     // Hamburger
     const btn = document.getElementById('hamburger-btn');
@@ -116,6 +134,7 @@
             <a href="services.html#ai-automation">AI & Automation</a>
             <a href="services.html#web-dev">Web Development</a>
             <a href="services.html#idea-validation">Idea Validation</a>
+            <a href="php2shell-check.html">Cyber Security</a>
           </div>
           <div class="footer-col">
             <h4>Company</h4>
